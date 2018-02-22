@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="480.0" minWidth="640.0" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <MenuBar prefHeight="25.0" prefWidth="1280.0">
+        <menus>
+          <Menu mnemonicParsing="false" text="Hilfe">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Bedienung" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+      <HBox layoutX="-2.0" layoutY="26.0" prefHeight="690.0" prefWidth="1280.0">
+         <children>
+            <VBox nodeOrientation="RIGHT_TO_LEFT">
+               <children>
+                  <TabPane prefHeight="690.0" prefWidth="586.0" tabClosingPolicy="UNAVAILABLE">
+                    <tabs>
+                      <Tab text="Rewe Marktsuche">
+                        <content>
+                          <AnchorPane minHeight="0.0" minWidth="0.0" prefWidth="608.0">
+                                 <padding>
+                                    <Insets right="5.0" top="4.0" />
+                                 </padding>
+                              </AnchorPane>
+                        </content>
+                      </Tab>
+                      <Tab text="Gelbe Seiten Marktsuche">
+                        <content>
+                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                        </content>
+                      </Tab>
+                    </tabs>
+                     <VBox.margin>
+                        <Insets top="4.0" />
+                     </VBox.margin>
+                  </TabPane>
+               </children>
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+            </VBox>
+            <VBox>
+               <children>
+                  <TableView maxHeight="566.0" maxWidth="695.0" prefHeight="566.0" prefWidth="695.0">
+                    <columns>
+                      <TableColumn prefWidth="97.0" text="Marktname" />
+                      <TableColumn prefWidth="69.0" text="Branche" />
+                        <TableColumn prefWidth="89.0" text="Postleitzahl" />
+                        <TableColumn prefWidth="65.0" text="Straße" />
+                        <TableColumn prefWidth="95.0" text="Hausnummer" />
+                        <TableColumn prefWidth="87.0" text="Enfernung" />
+                        <TableColumn minWidth="0.0" prefWidth="73.0" text="Telefon" />
+                        <TableColumn prefWidth="122.0" text="Webseite" />
+                    </columns>
+                     <VBox.margin>
+                        <Insets left="5.0" top="4.0" />
+                     </VBox.margin>
+                  </TableView>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+   </children>
+</Pane>
