@@ -6,8 +6,8 @@
 package marketfinder;
 
 /**
- *
- * @author Livem
+ * Ein Interface für alle Märkte
+ * @author Andrei
  */
 public interface Market {
     @Override

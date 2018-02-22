@@ -21,20 +21,27 @@ import java.util.logging.Logger;
  */
 public class CSVExport {
 
+    //CSV Kopfzeile
     private String CSVData = "Marktname;Branche;Stadt;PLZ;Stra\u00dfe;Hausnummer;Entfernung;Telefon;Webseite";
 
     public CSVExport() {
 
     }
 
+    /**
+     * Zeigt die Liste mit den Märkten an
+     * @param markets 
+     */
     public CSVExport(ArrayList<Market> markets) {
         exportCSVFromList(markets);
     }
 
+    
+    
     /**
      * Erstellt eine Liste aus Märkten
      *
-     * @param markets
+     * @param markets Liste mit den Märkten
      */
     public void exportCSVFromList(ArrayList<Market> markets) {
 

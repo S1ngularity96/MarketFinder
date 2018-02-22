@@ -14,7 +14,7 @@ import org.json.JSONException;
 
 /**
  *
- * @author Livem
+ * @author Andrei
  */
 public class MarketFinder {
 
@@ -22,27 +22,7 @@ public class MarketFinder {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        ArrayList<Market> liste = null;
-        try {
-            GelbeSeitenParser gelb = new GelbeSeitenParser();
-            gelb.setRequestURL("edeka", "aachen", "52064");
-            liste = gelb.commitRequestAndReceive();
-            
-            CSVExport export = new CSVExport(liste);
-            try {
-                export.printToFile();
-            } catch (IOException ex) {
-                System.err.println("Error writing File");
-            }
-            
-        } catch (PageLoadingException ex) {
-            System.err.println("Error");
-        }
-        
-        
-        
-        
-    
+        // Hier kommt die Main
     }
     
     

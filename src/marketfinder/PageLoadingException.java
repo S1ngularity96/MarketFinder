@@ -6,8 +6,9 @@
 package marketfinder;
 
 /**
- *
- * @author Livem
+ * Wenn eine Webseite nicht korrekt geladen wird, dann 
+ * wird die Exeption geworfen
+ * @author Andrei
  */
 public class PageLoadingException extends Exception{
 
