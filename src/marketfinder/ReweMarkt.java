@@ -126,6 +126,11 @@ public class ReweMarkt implements Market{
                 "\nWebseite: "+ webseite + "\n";
     }
 
+    /**
+     * Gemeint ist ein Link, der zu einer Seite vom
+     * jeweiligen dargestellten Markt.
+     * @return 
+     */
     @Override
     public String getWebseite() {
         return webseite;

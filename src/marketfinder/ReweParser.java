@@ -80,20 +80,35 @@ public class ReweParser {
   // leerer Default Konstruktor
   public ReweParser(){}
   
-  
+  /**
+   * 
+   * @param postleitzahl Postleitzahl für die REWE Märkte
+   * @return Eine Liste mit allen Rewe- Märkten
+   * @throws IOException 
+   * @throws JSONException 
+   */
   public ArrayList<Market> setNewRequest(int postleitzahl) throws IOException, JSONException{
       JSONObject json =  readJsonFromUrl("https://shop.rewe.de/mc/api/markets-stationary/"+postleitzahl+"/");
       return collectData(json);
   }
   
+  /**
+   * 
+   * @param URL Eine URL mit der GET- Anfrage bei der 
+   * REWE- Marktsuche
+   * @return Eine Liste mit allen Rewe- Märkten
+   * @throws IOException
+   * @throws JSONException 
+   */
   public ArrayList<Market> setNewRequest(String URL) throws IOException, JSONException{
       JSONObject json =  readJsonFromUrl(URL);
       return collectData(json);
   }
   
   /**
-   * Parse das JSONObjekt und speichere Routen-Informationen in weiteren 
-   * JSON Objects
+   * Parsed das JSON- Objekt, das von REWE Marktsuche zurück
+   * gegeben wird und gibt anschließen eine Liste mit den
+   * einzelnen Märkten zurück.
    * @param object
    * @throws JSONException 
    */
@@ -111,10 +126,7 @@ public class ReweParser {
           JSONObject opening = reweMarket.getJSONObject("openingHours");
           JSONArray openDetails = opening.getJSONArray("condensed");
           
-          
-          
-          
-          
+          //Hinzufügen von einzelnen Elementen zum ReweMarkt
           liste.add(new ReweMarkt(reweMarket.getString("name"), 
                   addr.getString("city"), 
                   addr.getString("postalCode"), 
@@ -142,6 +154,13 @@ public class ReweParser {
     return liste;
     }
   
+  /**
+   * Jeder REWE- Markt hat eine eindeutige ID.
+   * Über eine ID lässt sich die Webseite des jeweiligen 
+   * REWE- Markts ermitteln.
+   * @param Id
+   * @return 
+   */
     public String getWebsiteByMarketId(String Id){
       try {
           Document doc = Jsoup.connect("https://www.rewe.de/marktseite/?wwident="+Id).get();

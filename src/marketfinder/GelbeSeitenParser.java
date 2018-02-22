@@ -7,8 +7,6 @@ package marketfinder;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import org.jsoup.Jsoup;
@@ -21,7 +19,7 @@ import org.jsoup.select.Elements;
  * @author Livem
  */
 public class GelbeSeitenParser {
-
+    //Request-URL für Gelbeseiten
     private String requestURL;
     
     
@@ -34,7 +32,7 @@ public class GelbeSeitenParser {
     
     /**
      * Gibt eine Markliste zurück, basierend nach den Sucheinstellungen
-     * @return
+     * @return Liste mit den Märkten
      * @throws PageLoadingException 
      */
     public ArrayList<Market> commitRequestAndReceive() throws PageLoadingException{
@@ -47,8 +45,11 @@ public class GelbeSeitenParser {
     }
     
     /**
-     * Setze eine neue GET- Request
-     * @param requestURL 
+     * Setze eine neue Request 
+     * @param stichwort Stichwort z.B Edeke oder Rewe
+     * @param stadt Stadt 
+     * @param plz Postleitzahl
+     * @param umkreisKm Umkreis in Kilometern
      */
     public void setRequestURL(String stichwort,String stadt, String plz, int umkreisKm) {
         umkreisKm = umkreisKm *1000;
@@ -59,28 +60,41 @@ public class GelbeSeitenParser {
         
     }
     
-    
+    /**
+     * Setze eine neue Request
+     * @param stichwort Stichwort z.B Edeke oder Rewe
+     * @param stadt Stadt 
+     * @param plz Postleitzahl
+     */
     public void setRequestURL(String stichwort,String stadt, String plz){
         this.requestURL = "https://www.gelbeseiten.de/"+stichwort+"/"+stadt+",,"+plz;
       
     }
     
+    /**
+     * 
+     * @param url URL von Gelbeseiten mit einer Anfrage
+     */
     public void setRequestURL(String url){
         this.requestURL = url;
     }
     
     /**
      * Gibt die eingestellte Request zurück
-     * @return 
+     * @return Liefert eine voreingestellte Request zurück
      */
     public String getRequestURL() {
         return requestURL;
     }
     
     /**
-     * Eine Webseite mit Ergebnissen wird als Dokument gespeichert
-     * @return
-     * @throws NullPointerException 
+     * Eine Webseite mit Ergebnissen wird als Dokument 
+     * gespeichert
+     * @return GelbeSeiten Webseite als Dokument gemäß
+     * der Request
+     * @throws marketfinder.PageLoadingException Seite 
+     * konnte nicht gefunden oder geladen werden.
+     *  
      */
     public Document getHtmlDoc() throws PageLoadingException{
         Document gelbeSeite = null;
@@ -146,7 +160,7 @@ public class GelbeSeitenParser {
     /**
      * Erstellt eine Teilnehmerliste aus Teilnehmerelemente und gibt eine
      * Marktliste zurück
-     * @param webseite 
+     * @param webseite GelbeSeiten Webseite
      * @return Teilnehmerliste 
      */
     public ArrayList<Market> teilnehmerListe(Document webseite){
@@ -169,6 +183,11 @@ public class GelbeSeitenParser {
      
     }
     
+    /**
+     * Alle Teilnehmen von der ersten Seite werden 
+     * ausgegeben
+     * @param webseite GelbeSeiten Webseite
+     */
     private void teilnehmerAusgeben(Document webseite){
         ArrayList<Element> teilnehmer = getTeilnehmerAsList(webseite);
         for(Element element : teilnehmer){
@@ -186,7 +205,7 @@ public class GelbeSeitenParser {
     
     /**
      * Gibt alle Teilnehmerelemente aus der Suche zurück
-     * @param webseite Angeforderte Seite
+     * @param webseite GelbeSeiten Webseite
      * @return Teilnehmerelemente
      */
     public  ArrayList<Element> getTeilnehmerAsList(Document webseite){
@@ -195,7 +214,7 @@ public class GelbeSeitenParser {
         ArrayList<Element> teilnehmer = new ArrayList<>();
         
         
-        
+        //Alle TeilnehmerIDS auslesen
         for(String id : ids){
            teilnehmer.add(webseite.getElementById("teilnehmer_"+id));
            
@@ -227,9 +246,9 @@ public class GelbeSeitenParser {
     
     /**
      * Gibt ein Element über einen Key als String zurück
-     * @param element
-     * @param key
-     * @return 
+     * @param element Element aus einer Webseite
+     * @param key Schlüsselwort für die Suche
+     * @return Element als Text
      */
     public String elementAnzeigen(Element element,String key){
         try{
@@ -242,9 +261,9 @@ public class GelbeSeitenParser {
     
     /**
      * Filtert die einzelnen Attribute aus einer Addresse
-     * @param elements
-     * @param key
-     * @return 
+     * @param elements Elemente aus einer Webseite
+     * @param key Schlüsselwort für die Suche
+     * @return Attribt als Text
      */
     public String getAttributeAddr(Elements elements, String key){
         

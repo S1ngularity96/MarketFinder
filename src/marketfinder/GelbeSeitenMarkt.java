@@ -11,7 +11,7 @@ package marketfinder;
  */
 public class GelbeSeitenMarkt implements Market{
 
-    // Wesentlichen Metadaten
+    // Wesentliche Metadaten
     final String marktname;
     final String branche;
     final String stadt;
@@ -20,10 +20,6 @@ public class GelbeSeitenMarkt implements Market{
           String hausnummer;
           String entfernung;
           
-    
-    
-    
-    
     //Telefon
     final String tele;
 
@@ -110,7 +106,7 @@ public class GelbeSeitenMarkt implements Market{
      * Index 0 Straße
      * Index 1 Hausnummer
      * @param addr
-     * @return 
+     * @return Array mit einer Straße und einer Hausnummer
      */
     private String[] splitAddr(String addr){
         String[] splittedAddr = {"",""};
