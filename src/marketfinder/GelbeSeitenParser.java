@@ -72,7 +72,7 @@ public class GelbeSeitenParser {
     }
     
     /**
-     * 
+     * ++ g
      * @param url URL von Gelbeseiten mit einer Anfrage
      */
     public void setRequestURL(String url){

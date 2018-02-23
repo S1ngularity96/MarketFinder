@@ -33,11 +33,10 @@ public class ReweMarkt implements Market{
     //Distanz
     final String distance;
     
-    //Telefon
+    //Kontakt
     final String tele;
-
-    //Webseite
     final String webseite;
+    
     public ReweMarkt(String marktname, String stadt, String plz, String straße, String hausnummer, String latidude, String longitude, String typ, String tage, String uhrzeit, String distance,String tele,String webseite) {
         this.marktname = marktname;
         this.stadt = stadt;

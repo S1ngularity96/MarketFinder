@@ -25,8 +25,23 @@ import org.jsoup.nodes.Document;
 
 public class ReweParser {
 
+  /**
+   * Leerer Default Konstruktor
+   */
+  public ReweParser(){}
+   
+  
+  /**
+   * 
+   * @param URL Google- MAPS API Request URL
+   * @throws IOException
+   * @throws JSONException 
+   */
+  public ReweParser(String URL)throws IOException, JSONException {
+      JSONObject json = readJsonFromUrl(URL);
+      collectData(json);
       
-    
+  }
     
     
   /**
@@ -65,20 +80,9 @@ public class ReweParser {
     }
   }
 
-  /**
-   * 
-   * @param URL Google- MAPS API Request URL
-   * @throws IOException
-   * @throws JSONException 
-   */
-  public ReweParser(String URL)throws IOException, JSONException {
-      JSONObject json = readJsonFromUrl(URL);
-      collectData(json);
-      
-  }
+
   
-  // leerer Default Konstruktor
-  public ReweParser(){}
+  
   
   /**
    * 

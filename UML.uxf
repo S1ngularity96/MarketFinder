@@ -1,0 +1,300 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.2">
+  <zoom_level>6</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>786</x>
+      <y>432</y>
+      <w>186</w>
+      <h>294</h>
+    </coordinates>
+    <panel_attributes>Package::marketfinder
+GelbeSeitenMarkt
+--
+*Allgemeines*
+~ marktname : String
+~ stadt : String
+~ plz : String
+~ straße : String
+~ hausnummer : String
+~ branche : String
+
+*Kontakt*
+~ telefon: String
+~ webseite: String
+--
++ GelbeSeitenMarkt(*Allgemeines*, *Kontakt*)
+
+*Realisierung*
++ toString() : String
++ getMarketname() : String
++ getStadt() : String
++ getPlz() : String
++ getHausnummer() : String
++ getDistance() : String
++ getTelefon() : String
++ getWebseite() : String
++ getBranche() : String
+
+*Speziell*
+- splitAddr(addr: String) : String[]
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1038</x>
+      <y>444</y>
+      <w>216</w>
+      <h>426</h>
+    </coordinates>
+    <panel_attributes>Package::marketfinder
+ReweMarkt
+--
+*Allgemeines*
+~ marktname : String
+~ stadt : String
+~ plz : String
+~ straße : String
+~ hausnummer : String
+~ branche : String
+
+*Geodaten*
+~ latiude : String
+~ longitude : String
+
+*Markttyp*
+~ typ : String
+
+*Öffnungszeiten*
+~ tage : String
+~ uhzeit : String
+
+*Kontakt*
+~ telefon: String
+~ webseite: String
+--
++ ReweMarkt(*Allgemeines*,*Geodaten*,Öffnugszeiten*,
+*Kontakt*)
+
+*Realisierung*
++ toString() : String
++ getMarketname() : String
++ getStadt() : String
++ getPlz() : String
++ getHausnummer() : String
++ getDistance() : String
++ getTelefon() : String
++ getWebseite() : String
++ getBranche() : String
+*Speziell*
++ getLatidude() : String
++ getLongitude() : String
++ getTyp() : String
++ getTage() : String
++ getUhrzeit() : String
+
+
+
+
+
+
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>432</x>
+      <y>168</y>
+      <w>234</w>
+      <h>114</h>
+    </coordinates>
+    <panel_attributes>Package::FatClass
+CSVExport
+--
+*CSV Kopfzeile*
+- CSVData : String 
+--
++ CSVExport()
++ CSVExport(markets : ArrayList&lt;Market&gt;)
++ exportCSVFromList(markets : ArrayList&lt;Market&gt;) : void
++ printCSV() : void
++ printToFile() throws IOException : void
+
+
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>948</x>
+      <y>174</y>
+      <w>126</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>Package::marketfinder
+PageLoadingException
+--
+--
++ PageLoadingException()</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>912</x>
+      <y>276</y>
+      <w>126</w>
+      <h>132</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;interface&gt;&gt;
+Package::marketfinder
+Market
+--
++ toString() : String
++ getMarketname() : String
++ getStadt() : String
++ getPlz() : String
++ getHausnummer() : String
++ getDistance() : String
++ getTelefon() : String
++ getWebseite() : String
++ getBranche() : String
+
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1032</x>
+      <y>402</y>
+      <w>18</w>
+      <h>54</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;70.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>906</x>
+      <y>402</y>
+      <w>18</w>
+      <h>42</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;50.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>978</x>
+      <y>54</y>
+      <w>60</w>
+      <h>18</h>
+    </coordinates>
+    <panel_attributes>Exception</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1002</x>
+      <y>66</y>
+      <w>18</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;180.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>750</x>
+      <y>84</y>
+      <w>126</w>
+      <h>42</h>
+    </coordinates>
+    <panel_attributes>Package::FatClass
+MarketFinder
+--
+*MAIN CLASS*
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>360</x>
+      <y>432</y>
+      <w>360</w>
+      <h>264</h>
+    </coordinates>
+    <panel_attributes>Package::FatClass
+ReweParser
+--
+
+--
+*Request eingeben und Daten erhalten*
++ setNewRequest(postleitzahl : Integer) : ArrayList&lt;Market&gt;
++ setNewRequest(url: String) : ArrayList&lt;Market&gt;
+
+*JSONparse Operationen*
++ readJsonFromUrl(url: String) : JSONObject
++ readAll(rd: Reader) : String
++ collectData(object : JSONObject) : ArrayList&lt;Market&gt;
+
+*Link von einer externen Webseite gemäß nach ID fordern*
++ getWebsiteByMarketId(String id): String
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>0</x>
+      <y>432</y>
+      <w>336</w>
+      <h>264</h>
+    </coordinates>
+    <panel_attributes>Package::FatClass
+GelbeSeitenParser
+--
+- requestURL : String
+--
++ GelbeSeitenParser() 
+
+*Allgemeine Methoden*
++ commitRequestAndReceive() throws PageLoadingException : ArrayList&lt;Market&gt;
++ setRequestURL(stichwort: String,stadt: String, plz: String, umkreisKm : Integer): void
++ setRequestURL(stichwort: String,stadt: String, plz: String): void
++ setRequestURL(url: String): void
++ getRequestedURL() : String
+
+*Parse Methoden*
+*Für CSV und externe Klassen*
++ teilnehmerListe(webseite: Document) : ArrayList&lt;Market&gt;
+
+*Hilfsmethoden für Parser*
++ getHTMLDoc() throws PageLoadingException : Document 
++ getNextURLs(webseite : Document) : ArrayList&lt;String&gt; 
++ getItemIds(webseite : Document) : ArrayList&lt;String&gt;
++ teilnehmerAusgeben(webseite : Document) : void
++ getTeilnehmerAsList(webseite : Document) : ArrayList&lt;Element&gt;
++ elementAnzeigen(element: Element, key: String) : String
++ getAttributeAddr(elemente : Elements, key: String) : String
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>
