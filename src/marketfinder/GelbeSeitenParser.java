@@ -53,7 +53,7 @@ public class GelbeSeitenParser {
      */
     public void setRequestURL(String stichwort,String stadt, String plz, int umkreisKm) {
         umkreisKm = umkreisKm *1000;
-        this.requestURL = "https://www.gelbeseiten.de/"+stichwort+"/"+stadt+",,"+plz+",,,umkreis-"+umkreisKm+"";
+        this.requestURL = "https://www.gelbeseiten.de/yp/search.yp?subject="+stichwort+"&location="+plz+"+"+stadt+"&distance="+ umkreisKm+"&urlSegmentOptionString=";
         
         
         

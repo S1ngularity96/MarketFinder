@@ -1,15 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="480.0" minWidth="640.0" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="480.0" minWidth="640.0" prefHeight="720.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <MenuBar prefHeight="25.0" prefWidth="1280.0">
+      <MenuBar minWidth="700.0" prefHeight="25.0" prefWidth="700.0">
         <menus>
+            <Menu mnemonicParsing="false" text="Datei">
+              <items>
+                <MenuItem mnemonicParsing="false" text="CSV Öffnen" />
+                  <MenuItem mnemonicParsing="false" text="CSV Schließen" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem mnemonicParsing="false" text="Beenden" />
+              </items>
+            </Menu>
           <Menu mnemonicParsing="false" text="Hilfe">
             <items>
               <MenuItem mnemonicParsing="false" text="Bedienung" />
@@ -17,56 +25,202 @@
           </Menu>
         </menus>
       </MenuBar>
-      <HBox layoutX="-2.0" layoutY="26.0" prefHeight="690.0" prefWidth="1280.0">
+      <VBox layoutY="25.0" prefHeight="695.0" prefWidth="695.0">
          <children>
-            <VBox nodeOrientation="RIGHT_TO_LEFT">
-               <children>
-                  <TabPane prefHeight="690.0" prefWidth="586.0" tabClosingPolicy="UNAVAILABLE">
-                    <tabs>
-                      <Tab text="Rewe Marktsuche">
-                        <content>
-                          <AnchorPane minHeight="0.0" minWidth="0.0" prefWidth="608.0">
-                                 <padding>
-                                    <Insets right="5.0" top="4.0" />
-                                 </padding>
-                              </AnchorPane>
-                        </content>
-                      </Tab>
-                      <Tab text="Gelbe Seiten Marktsuche">
-                        <content>
-                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-                        </content>
-                      </Tab>
-                    </tabs>
-                     <VBox.margin>
-                        <Insets top="4.0" />
-                     </VBox.margin>
-                  </TabPane>
-               </children>
-               <HBox.margin>
-                  <Insets />
-               </HBox.margin>
-            </VBox>
-            <VBox>
-               <children>
-                  <TableView maxHeight="566.0" maxWidth="695.0" prefHeight="566.0" prefWidth="695.0">
-                    <columns>
-                      <TableColumn prefWidth="97.0" text="Marktname" />
-                      <TableColumn prefWidth="69.0" text="Branche" />
-                        <TableColumn prefWidth="89.0" text="Postleitzahl" />
-                        <TableColumn prefWidth="65.0" text="Straße" />
-                        <TableColumn prefWidth="95.0" text="Hausnummer" />
-                        <TableColumn prefWidth="87.0" text="Enfernung" />
-                        <TableColumn minWidth="0.0" prefWidth="73.0" text="Telefon" />
-                        <TableColumn prefWidth="122.0" text="Webseite" />
-                    </columns>
-                     <VBox.margin>
-                        <Insets left="5.0" top="4.0" />
-                     </VBox.margin>
-                  </TableView>
-               </children>
-            </VBox>
+            <TableView minHeight="440.0" minWidth="700.0" prefHeight="440.0" prefWidth="700.0">
+              <columns>
+                <TableColumn prefWidth="97.0" text="Marktname" />
+                <TableColumn prefWidth="69.0" text="Branche" />
+                  <TableColumn prefWidth="89.0" text="Postleitzahl" />
+                  <TableColumn prefWidth="65.0" text="Straße" />
+                  <TableColumn prefWidth="95.0" text="Hausnummer" />
+                  <TableColumn prefWidth="87.0" text="Enfernung" />
+                  <TableColumn minWidth="0.0" prefWidth="73.0" text="Telefon" />
+                  <TableColumn prefWidth="122.0" text="Webseite" />
+              </columns>
+            </TableView>
+            <TabPane minWidth="700.0" prefHeight="256.0" prefWidth="700.0" tabClosingPolicy="UNAVAILABLE">
+              <tabs>
+                <Tab text="GelbeSeiten">
+                     <content>
+                        <HBox prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <VBox minWidth="190.0" prefHeight="207.0" prefWidth="190.0">
+                                 <HBox.margin>
+                                    <Insets left="20.0" right="20.0" top="20.0" />
+                                 </HBox.margin>
+                                 <children>
+                                    <Label text="Suche">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                       <VBox.margin>
+                                          <Insets />
+                                       </VBox.margin>
+                                    </Label>
+                                    <TextField maxHeight="-Infinity" prefHeight="35.0" prefWidth="142.0" promptText="Stichwort">
+                                       <VBox.margin>
+                                          <Insets bottom="10.0" top="20.0" />
+                                       </VBox.margin>
+                                    </TextField>
+                                 </children>
+                              </VBox>
+                              <VBox minWidth="165.0" prefHeight="207.0" prefWidth="165.0">
+                                 <HBox.margin>
+                                    <Insets right="20.0" top="20.0" />
+                                 </HBox.margin>
+                                 <children>
+                                    <TextField maxHeight="-Infinity" prefHeight="35.0" prefWidth="100.0" promptText="Postleitzahl">
+                                       <VBox.margin>
+                                          <Insets bottom="10.0" top="47.0" />
+                                       </VBox.margin>
+                                    </TextField>
+                                 </children>
+                              </VBox>
+                              <VBox minWidth="170.0" prefHeight="207.0" prefWidth="285.0">
+                                 <HBox.margin>
+                                    <Insets top="20.0" />
+                                 </HBox.margin>
+                                 <children>
+                                    <Label text="Umkreis in Kilometer">
+                                       <VBox.margin>
+                                          <Insets />
+                                       </VBox.margin>
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <Label text="0 Kilometer">
+                                       <font>
+                                          <Font name="System Bold Italic" size="12.0" />
+                                       </font>
+                                       <VBox.margin>
+                                          <Insets left="45.0" top="17.0" />
+                                       </VBox.margin>
+                                    </Label>
+                                    <Slider blockIncrement="1.0" max="50.0" maxWidth="170.0">
+                                       <VBox.margin>
+                                          <Insets top="7.0" />
+                                       </VBox.margin>
+                                    </Slider>
+                                    <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="135.0" text="Suche">
+                                       <VBox.margin>
+                                          <Insets bottom="10.0" left="120.0" right="30.0" top="70.0" />
+                                       </VBox.margin>
+                                    </Button>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </HBox>
+                     </content>
+                </Tab>
+                  <Tab text="REWE Marktsuche">
+                     <content>
+                        <HBox prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <VBox minWidth="190.0" prefHeight="207.0" prefWidth="190.0">
+                                 <children>
+                                    <Label text="Suche">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField maxHeight="-Infinity" prefHeight="35.0" prefWidth="100.0" promptText="Postleitzahl">
+                                       <VBox.margin>
+                                          <Insets top="20.0" />
+                                       </VBox.margin>
+                                    </TextField>
+                                 </children>
+                                 <HBox.margin>
+                                    <Insets left="20.0" top="20.0" />
+                                 </HBox.margin>
+                              </VBox>
+                              <VBox prefHeight="227.0" prefWidth="500.0">
+                                 <children>
+                                    <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="135.0" text="Suche">
+                                       <VBox.margin>
+                                          <Insets bottom="10.0" left="325.0" right="30.0" top="172.0" />
+                                       </VBox.margin>
+                                    </Button>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </HBox>
+                     </content>
+                  </Tab>
+                <Tab text="Filtereinstellungen">
+                     <content>
+                        <HBox prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <VBox prefHeight="227.0" prefWidth="167.0">
+                                 <children>
+                                    <CheckBox mnemonicParsing="false" text="Markname vorhanden">
+                                       <VBox.margin>
+                                          <Insets top="20.0" />
+                                       </VBox.margin>
+                                    </CheckBox>
+                                    <CheckBox mnemonicParsing="false" text="Hausnummer vorhanden">
+                                       <VBox.margin>
+                                          <Insets top="20.0" />
+                                       </VBox.margin>
+                                    </CheckBox>
+                                 </children>
+                                 <HBox.margin>
+                                    <Insets left="20.0" />
+                                 </HBox.margin>
+                              </VBox>
+                              <VBox prefHeight="227.0" prefWidth="150.0">
+                                 <children>
+                                    <CheckBox mnemonicParsing="false" text="Branche vorhanden">
+                                       <VBox.margin>
+                                          <Insets top="20.0" />
+                                       </VBox.margin>
+                                    </CheckBox>
+                                    <CheckBox mnemonicParsing="false" text="Enfernung vorhanden">
+                                       <VBox.margin>
+                                          <Insets top="20.0" />
+                                       </VBox.margin>
+                                    </CheckBox>
+                                 </children>
+                              </VBox>
+                              <VBox prefHeight="227.0" prefWidth="159.0">
+                                 <children>
+                                    <CheckBox mnemonicParsing="false" text="Postleitzahl vorhanden">
+                                       <VBox.margin>
+                                          <Insets top="20.0" />
+                                       </VBox.margin>
+                                    </CheckBox>
+                                    <CheckBox mnemonicParsing="false" text="Telefon vorhanden">
+                                       <VBox.margin>
+                                          <Insets top="20.0" />
+                                       </VBox.margin>
+                                    </CheckBox>
+                                 </children>
+                              </VBox>
+                              <VBox prefHeight="227.0" prefWidth="146.0">
+                                 <children>
+                                    <CheckBox mnemonicParsing="false" text="Straße vorhandne">
+                                       <VBox.margin>
+                                          <Insets top="20.0" />
+                                       </VBox.margin>
+                                    </CheckBox>
+                                    <CheckBox mnemonicParsing="false" text="Webseite vorhanden">
+                                       <VBox.margin>
+                                          <Insets top="20.0" />
+                                       </VBox.margin>
+                                    </CheckBox>
+                                 </children>
+                                 <HBox.margin>
+                                    <Insets right="20.0" />
+                                 </HBox.margin>
+                              </VBox>
+                           </children>
+                        </HBox>
+                     </content>
+                </Tab>
+              </tabs>
+            </TabPane>
          </children>
-      </HBox>
+      </VBox>
    </children>
 </Pane>
