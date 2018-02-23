@@ -113,7 +113,7 @@ ReweMarkt
       <w>234</w>
       <h>114</h>
     </coordinates>
-    <panel_attributes>Package::FatClass
+    <panel_attributes>Package::marketfinder
 CSVExport
 --
 *CSV Kopfzeile*
@@ -223,7 +223,7 @@ Market
       <w>126</w>
       <h>42</h>
     </coordinates>
-    <panel_attributes>Package::FatClass
+    <panel_attributes>Package::marketfinder
 MarketFinder
 --
 *MAIN CLASS*
@@ -239,7 +239,7 @@ MarketFinder
       <w>360</w>
       <h>264</h>
     </coordinates>
-    <panel_attributes>Package::FatClass
+    <panel_attributes>Package::marketfinder
 ReweParser
 --
 
@@ -267,7 +267,7 @@ ReweParser
       <w>336</w>
       <h>264</h>
     </coordinates>
-    <panel_attributes>Package::FatClass
+    <panel_attributes>Package::marketfinder
 GelbeSeitenParser
 --
 - requestURL : String
