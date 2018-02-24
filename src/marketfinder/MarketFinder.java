@@ -11,7 +11,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import jdk.nashorn.internal.codegen.CompilerConstants;
+
 
 
 
@@ -71,7 +71,7 @@ public class MarketFinder extends Application {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        launch(args);
+        
     }
     
     
