@@ -51,10 +51,10 @@ public class CSVExport {
                     + "\""+ markt.getBranche()+"\"" + ";"
                     + "\""+ markt.getStadt()+"\"" + ";"
                     + "\""+ markt.getPlz()+"\"" + ";"
-                    + "\""+ markt.getStraße()+"\"" + ";"
+                    + "\""+ markt.getStrasse()+"\"" + ";"
                     + "\""+ markt.getHausnummer()+"\"" + ";"
-                    + "\""+ markt.getDistance()+"\"" + ";"
-                    + "\""+ markt.getTelefon()+"\"" + ";"
+                    + "\""+ markt.getEntfernung()+"\"" + ";"
+                    + "\""+ markt.getTele()+"\"" + ";"
                     + "\""+ markt.getWebseite()+"\"";
 
         }

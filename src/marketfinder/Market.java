@@ -5,29 +5,59 @@
  */
 package marketfinder;
 
+import javafx.beans.property.SimpleStringProperty;
+
 /**
  * Ein Interface für alle Märkte
  * @author Andrei
  */
-public interface Market {
+public abstract class Market {
+    
+     SimpleStringProperty marktname;
+     SimpleStringProperty stadt;
+     SimpleStringProperty plz;
+     SimpleStringProperty strasse;
+     SimpleStringProperty hausnummer;
+     SimpleStringProperty branche;
+     SimpleStringProperty entfernung;
+     SimpleStringProperty tele;
+     SimpleStringProperty webseite;
+    
+         
+
+    public Market(String marktname, String stadt, String plz, String strasse, String hausnummer, String branche, String entfernung, String tele, String webseite) {
+        this.marktname = new SimpleStringProperty(marktname);
+        this.stadt = new SimpleStringProperty(stadt);
+        this.plz = new SimpleStringProperty(plz);
+        this.strasse = new SimpleStringProperty(strasse);
+        this.hausnummer = new SimpleStringProperty(hausnummer);
+        this.branche = new SimpleStringProperty(branche);
+        this.entfernung = new SimpleStringProperty(entfernung);
+        this.tele = new SimpleStringProperty(tele);
+        this.webseite = new SimpleStringProperty(webseite);
+    }
+    
+    
+    
     @Override
-    public String toString();
+    public abstract String toString();
     
-    public String getMarktname(); 
+    
+    public abstract String getMarktname(); 
 
-    public String getStadt();
+    public abstract String getStadt();
 
-    public String getPlz();
+    public abstract String getPlz();
 
-    public String getStraße();
+    public abstract String getStrasse();
 
-    public String getHausnummer();
+    public abstract String getHausnummer();
     
-    public String getDistance();
+    public abstract  String getEntfernung();
     
-    public String getTelefon();
+    public abstract String getTele();
     
-    public String getWebseite();
+    public abstract  String getWebseite();
     
-    public String getBranche();
+    public abstract  String getBranche();
 }

@@ -9,15 +9,10 @@ package marketfinder;
  *
  * @author Livem
  */
-public class ReweMarkt implements Market{
+public class ReweMarkt extends Market{
     
     // Wesentlichen Metadaten
-    final String marktname;
-    final String stadt;
-    final String plz;
-    final String straße;
-    final String hausnummer;
-    final String branche = "Lebensmittel";
+    
     
     //geoDaten
     final String latidude;
@@ -30,47 +25,41 @@ public class ReweMarkt implements Market{
     final String tage;
     final String uhrzeit;
     
-    //Distanz
-    final String distance;
     
-    //Kontakt
-    final String tele;
-    final String webseite;
     
     public ReweMarkt(String marktname, String stadt, String plz, String straße, String hausnummer, String latidude, String longitude, String typ, String tage, String uhrzeit, String distance,String tele,String webseite) {
-        this.marktname = marktname;
-        this.stadt = stadt;
-        this.plz = plz;
-        this.straße = straße;
-        this.hausnummer = hausnummer;
+        
+        super(marktname, stadt, plz, straße, hausnummer, "Lebensmittel", distance, tele, webseite);
         this.latidude = latidude;
         this.longitude = longitude;
         this.typ = typ;
         this.tage = tage;
         this.uhrzeit = uhrzeit;
-        this.distance = distance;
-        this.tele = tele;
-        this.webseite = webseite;
     }
 
+    @Override
     public String getMarktname() {
-        return marktname;
+        return marktname.get();
     }
 
+    @Override
     public String getStadt() {
-        return stadt;
+        return stadt.get();
     }
 
+    @Override
     public String getPlz() {
-        return plz;
+        return plz.get();
     }
 
-    public String getStraße() {
-        return straße;
+    @Override
+    public String getStrasse() {
+        return strasse.get();
     }
 
+    @Override
     public String getHausnummer() {
-        return hausnummer;
+        return hausnummer.get();
     }
 
     public String getLatidude() {
@@ -89,16 +78,19 @@ public class ReweMarkt implements Market{
         return tage;
     }
 
-    public String getDistance() {
-        return distance;
+    @Override
+    public String getEntfernung() {
+        return entfernung.get();
     }
     
-    public String getTelefon(){
-        return tele;
+    @Override
+    public String getTele(){
+        return tele.get();
     }
     
+    @Override
     public String getBranche(){
-        return branche;
+        return branche.get();
     }
 
     @Override
@@ -109,13 +101,13 @@ public class ReweMarkt implements Market{
                 "\nMarktname: " + marktname + 
                 "\nStadt: " + stadt + 
                 "\nPLZ: " + plz + 
-                "\nStra\u00dfe: " + straße + 
+                "\nStra\u00dfe: " + strasse + 
                 "\nHausnummer: " + hausnummer +
                 "\nTelefonnummer: "+ tele+
                 "\nGeodaten:" +
                 "\nLatidude: " + latidude + 
                 "\nLongitude: " + longitude +
-                "\nEntfernung: " + distance+
+                "\nEntfernung: " + entfernung+
                 "\nArt:"+
                 "\nTyp: " + typ +
                 "\nBranche: "+ branche +
@@ -132,7 +124,7 @@ public class ReweMarkt implements Market{
      */
     @Override
     public String getWebseite() {
-        return webseite;
+        return webseite.get();
     }
     
     

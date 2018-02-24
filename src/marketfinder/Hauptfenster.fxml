@@ -30,14 +30,15 @@
          <children>
             <TableView fx:id="tabelle_Maerkte" minHeight="-Infinity" minWidth="-Infinity" prefHeight="441.0" prefWidth="1057.0" VBox.vgrow="ALWAYS">
                <columns>
-                  <TableColumn prefWidth="97.0" text="Marktname" />
-                  <TableColumn prefWidth="119.0" text="Branche" />
-                  <TableColumn prefWidth="73.0" text="Postleitzahl" />
-                  <TableColumn prefWidth="188.0" text="Straße" />
-                  <TableColumn prefWidth="95.0" text="Hausnummer" />
-                  <TableColumn prefWidth="108.0" text="Enfernung" />
-                  <TableColumn minWidth="0.0" prefWidth="129.0" text="Telefon" />
-                  <TableColumn prefWidth="247.0" text="Webseite" />
+                  <TableColumn fx:id="column_marktname" prefWidth="97.0" text="Marktname" />
+                  <TableColumn fx:id="column_branche" prefWidth="119.0" text="Branche" />
+                  <TableColumn fx:id="column_stadt" prefWidth="75.0" text="Stadt" />
+                  <TableColumn fx:id="column_postleitzahl" prefWidth="73.0" text="Postleitzahl" />
+                  <TableColumn fx:id="column_strasse" prefWidth="188.0" text="Straße" />
+                  <TableColumn fx:id="column_hausnummer" prefWidth="95.0" text="Hausnummer" />
+                  <TableColumn fx:id="column_entfernung" prefWidth="108.0" text="Enfernung" />
+                  <TableColumn fx:id="column_telefon" minWidth="0.0" prefWidth="129.0" text="Telefon" />
+                  <TableColumn fx:id="column_webseite" prefWidth="247.0" text="Webseite" />
                </columns>
                <columnResizePolicy>
                   <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />

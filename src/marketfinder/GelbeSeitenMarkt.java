@@ -5,83 +5,69 @@
  */
 package marketfinder;
 
+import javafx.beans.property.SimpleStringProperty;
+
 /**
  *
  * @author Livem
  */
-public class GelbeSeitenMarkt implements Market{
+public class GelbeSeitenMarkt extends Market{
 
-    // Wesentliche Metadaten
-    final String marktname;
-    final String branche;
-    final String stadt;
-    final String plz;
-          String strasse;
-          String hausnummer;
-          String entfernung;
-          
-    //Telefon
-    final String tele;
-
-    //Webseite
-    final String webseite;
+    
 
     public GelbeSeitenMarkt(String marktname, String branche, String stadt, String plz, String strasse, String entfernung, String tele, String webseite) {
-        this.marktname = marktname;
-        this.branche = branche;
-        this.stadt = stadt;
-        this.plz = plz;
-        this.strasse = splitAddr(strasse)[0];
-        this.hausnummer = splitAddr(strasse)[1];
-        this.entfernung = entfernung;
-        this.tele = tele;
-        this.webseite = webseite;
+        
+        super(marktname, stadt, plz, "", "", branche, entfernung, tele, webseite);
+        this.strasse = new SimpleStringProperty(splitAddr(strasse)[0]);
+        this.hausnummer = new SimpleStringProperty(splitAddr(strasse)[1]);
+        
     }
 
    
 
+    @Override
     public String getMarktname() {
-        return marktname;
+        return marktname.get();
     }
 
     @Override
     public String getStadt() {
-        return stadt;
+        return stadt.get();
     }
 
     @Override
     public String getPlz() {
-        return plz;
+        return plz.get();
     }
 
     @Override
-    public String getStraße() {
-        return strasse;
+    public String getStrasse() {
+        return strasse.get();
     }
 
     @Override
     public String getHausnummer() {
-        return hausnummer;
+        return hausnummer.get();
     }
 
     @Override
     public String getBranche() {
-        return branche;
+        return branche.get();
     }
 
     @Override
     public String getWebseite() {
-        return webseite;
+        return webseite.get();
     }
 
     @Override
-    public String getDistance() {
-        return entfernung;
+    public String getEntfernung() {
+        return entfernung.get();
     }
 
     @Override
-    public String getTelefon() {
-        return tele;
+    public String getTele() {
+        return tele.get();
     }
 
     @Override
