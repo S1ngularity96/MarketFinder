@@ -7,7 +7,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="718.0" prefWidth="1057.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="718.0" prefWidth="1057.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="marketfinder.Hauptfenster_Controller">
    <children>
       <MenuBar minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="700.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <menus>
@@ -28,7 +28,7 @@
       </MenuBar>
       <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="338.0" prefWidth="1057.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="25.0">
          <children>
-            <TableView minHeight="-Infinity" minWidth="-Infinity" prefHeight="441.0" prefWidth="1057.0" VBox.vgrow="ALWAYS">
+            <TableView fx:id="tabelle_Maerkte" minHeight="-Infinity" minWidth="-Infinity" prefHeight="441.0" prefWidth="1057.0" VBox.vgrow="ALWAYS">
                <columns>
                   <TableColumn prefWidth="97.0" text="Marktname" />
                   <TableColumn prefWidth="119.0" text="Branche" />
@@ -83,7 +83,7 @@
                               </VBox>
                               <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="170.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="168.0" prefWidth="285.0" HBox.hgrow="SOMETIMES">
                                  <children>
-                                    <Label text="Umkreis in Kilometer">
+                                    <Label alignment="CENTER" prefHeight="27.0" prefWidth="152.0" text="Umkreis ">
                                        <font>
                                           <Font size="18.0" />
                                        </font>
@@ -91,7 +91,7 @@
                                           <Insets />
                                        </VBox.margin>
                                     </Label>
-                                    <Label text="0 Kilometer">
+                                    <Label fx:id="kilometerstand_label" text="0 Kilometer">
                                        <font>
                                           <Font name="System Bold Italic" size="12.0" />
                                        </font>
@@ -99,7 +99,7 @@
                                           <Insets left="45.0" top="17.0" />
                                        </VBox.margin>
                                     </Label>
-                                    <Slider blockIncrement="1.0" max="50.0" maxWidth="170.0" VBox.vgrow="SOMETIMES">
+                                    <Slider fx:id="kilometer_slider" blockIncrement="1.0" max="50.0" maxWidth="170.0" VBox.vgrow="SOMETIMES">
                                        <VBox.margin>
                                           <Insets top="7.0" />
                                        </VBox.margin>
@@ -139,7 +139,7 @@
                                           <Insets left="20.0" top="20.0" />
                                        </VBox.margin>
                                     </Label>
-                                    <TextField maxHeight="-Infinity" prefHeight="35.0" prefWidth="100.0" promptText="Postleitzahl">
+                                    <TextField fx:id="rewe_plz_text" maxHeight="-Infinity" prefHeight="35.0" prefWidth="100.0" promptText="Postleitzahl">
                                        <VBox.margin>
                                           <Insets left="20.0" right="20.0" top="20.0" />
                                        </VBox.margin>
@@ -151,9 +151,9 @@
                               </VBox>
                               <VBox alignment="BOTTOM_RIGHT" nodeOrientation="LEFT_TO_RIGHT" prefHeight="224.0" prefWidth="210.0" HBox.hgrow="ALWAYS">
                                  <children>
-                                    <Button alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" prefHeight="25.0" prefWidth="135.0" text="Suche">
+                                    <Button fx:id="rewe_commitSearch" alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onMouseClicked="#rewe_CommitSearch" prefHeight="25.0" prefWidth="135.0" text="Suche">
                                        <VBox.margin>
-                                          <Insets bottom="27.0" right="30.0" />
+                                          <Insets bottom="27.0" right="29.0" />
                                        </VBox.margin>
                                        <cursor>
                                           <Cursor fx:constant="HAND" />
@@ -181,6 +181,11 @@
                                           <Insets top="20.0" />
                                        </VBox.margin>
                                     </CheckBox>
+                                    <Separator prefWidth="200.0">
+                                       <VBox.margin>
+                                          <Insets top="20.0" />
+                                       </VBox.margin>
+                                    </Separator>
                                  </children>
                                  <HBox.margin>
                                     <Insets left="20.0" />
@@ -198,6 +203,11 @@
                                           <Insets top="20.0" />
                                        </VBox.margin>
                                     </CheckBox>
+                                    <Separator prefWidth="200.0">
+                                       <VBox.margin>
+                                          <Insets top="20.0" />
+                                       </VBox.margin>
+                                    </Separator>
                                  </children>
                               </VBox>
                               <VBox prefHeight="227.0" prefWidth="159.0" HBox.hgrow="ALWAYS">
@@ -212,6 +222,11 @@
                                           <Insets top="20.0" />
                                        </VBox.margin>
                                     </CheckBox>
+                                    <Separator prefWidth="200.0">
+                                       <VBox.margin>
+                                          <Insets top="20.0" />
+                                       </VBox.margin>
+                                    </Separator>
                                  </children>
                               </VBox>
                               <VBox prefHeight="227.0" prefWidth="146.0" HBox.hgrow="ALWAYS">
@@ -226,6 +241,11 @@
                                           <Insets top="20.0" />
                                        </VBox.margin>
                                     </CheckBox>
+                                    <Separator prefWidth="200.0">
+                                       <VBox.margin>
+                                          <Insets top="20.0" />
+                                       </VBox.margin>
+                                    </Separator>
                                  </children>
                                  <HBox.margin>
                                     <Insets right="20.0" />
