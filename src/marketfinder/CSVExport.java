@@ -5,6 +5,7 @@
  */
 package marketfinder;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -70,13 +71,14 @@ public class CSVExport {
 
     /**
      * Legt eine CSV Datei auf der Festplatte ab
+     * @param file Datei mit Speicherort angabe
      * @throws IOException 
      */
-    public void printToFile() throws IOException {
+    public void printToFile(File file) throws IOException {
         OutputStream os = null;
         try {
 
-            os = new FileOutputStream("ExportCSV.csv");
+            os = new FileOutputStream(file);
             os.write(239);
             os.write(187);
             os.write(191);

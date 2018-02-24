@@ -16,14 +16,17 @@ import java.util.Base64;
 public class Base64_Decoder{
     
    
+    
     private String decodedString;
     
-    //Leerer Decoder
-    public Base64_Decoder(){
-    
+    public  Base64_Decoder(){
+        
     }
     
+    
     public String decodeBase64(String src){
+        
+        
         byte decoded[] = Base64.getDecoder().decode(src);
         
         decodedString = new String(decoded);

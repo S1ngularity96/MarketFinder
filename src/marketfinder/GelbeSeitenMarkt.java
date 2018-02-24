@@ -74,15 +74,15 @@ public class GelbeSeitenMarkt extends Market{
     public String toString() {
         return "-------------------------------------------"+
                 "\nGelbeSeiten Markt\n" + 
-                "\nMarktname: " + marktname + 
-                "\nStadt: " + stadt + 
-                "\nPLZ: " + plz + 
-                "\nStra\u00dfe: " + strasse + 
-                "\nHausnummer: " + hausnummer +
-                "\nTelefonnummer: "+ tele+
-                "\nEntfernung: " + entfernung+
-                "\nBranche: "+ branche +
-                "\nWebseite: "+ webseite + "\n";
+                "\nMarktname: " + getMarktname() + 
+                "\nStadt: " + getStadt() + 
+                "\nPLZ: " + getPlz() + 
+                "\nStra\u00dfe: " + getStrasse() + 
+                "\nHausnummer: " + getHausnummer() +
+                "\nTelefonnummer: "+ getTele()+
+                "\nEntfernung: " + getEntfernung()+
+                "\nBranche: "+ getBranche() +
+                "\nWebseite: "+ getWebseite() + "\n";
     }
     
     

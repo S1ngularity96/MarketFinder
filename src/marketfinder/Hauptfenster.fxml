@@ -13,8 +13,7 @@
          <menus>
             <Menu mnemonicParsing="false" text="Datei">
                <items>
-                  <MenuItem mnemonicParsing="false" text="CSV Öffnen" />
-                  <MenuItem mnemonicParsing="false" text="CSV Schließen" />
+                  <MenuItem mnemonicParsing="false" onAction="#marketFinder_CSV_speichern" text="Als CSV speichern" />
                   <SeparatorMenuItem mnemonicParsing="false" />
                   <MenuItem mnemonicParsing="false" text="Beenden" />
                </items>
@@ -60,7 +59,7 @@
                                           <Insets />
                                        </VBox.margin>
                                     </Label>
-                                    <TextField maxHeight="-Infinity" prefHeight="35.0" prefWidth="142.0" promptText="Stichwort">
+                                    <TextField fx:id="gelbeseiten_stichwort" maxHeight="-Infinity" prefHeight="35.0" prefWidth="142.0" promptText="Stichwort">
                                        <VBox.margin>
                                           <Insets bottom="10.0" top="20.0" />
                                        </VBox.margin>
@@ -72,7 +71,7 @@
                               </VBox>
                               <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="165.0" prefHeight="207.0" prefWidth="165.0" HBox.hgrow="SOMETIMES">
                                  <children>
-                                    <TextField maxHeight="-Infinity" prefHeight="35.0" prefWidth="100.0" promptText="Postleitzahl">
+                                    <TextField fx:id="gelbeSeiten_postleitzahl" maxHeight="-Infinity" prefHeight="35.0" prefWidth="100.0" promptText="Postleitzahl">
                                        <VBox.margin>
                                           <Insets bottom="10.0" top="47.0" />
                                        </VBox.margin>
@@ -92,7 +91,7 @@
                                           <Insets />
                                        </VBox.margin>
                                     </Label>
-                                    <Label fx:id="kilometerstand_label" text="0 Kilometer">
+                                    <Label fx:id="kilometerstand_label" text="1 Kilometer">
                                        <font>
                                           <Font name="System Bold Italic" size="12.0" />
                                        </font>
@@ -100,14 +99,14 @@
                                           <Insets left="45.0" top="17.0" />
                                        </VBox.margin>
                                     </Label>
-                                    <Slider fx:id="kilometer_slider" blockIncrement="1.0" max="50.0" maxWidth="170.0" VBox.vgrow="SOMETIMES">
+                                    <Slider fx:id="kilometer_slider" blockIncrement="5.0" max="50.0" maxWidth="170.0" min="1.0" value="1.0" VBox.vgrow="SOMETIMES">
                                        <VBox.margin>
                                           <Insets top="7.0" />
                                        </VBox.margin>
                                     </Slider>
                                     <HBox alignment="BOTTOM_RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="125.0" prefWidth="285.0">
                                        <children>
-                                          <Button alignment="TOP_CENTER" contentDisplay="TOP" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" prefHeight="25.0" prefWidth="135.0" text="Suche" textAlignment="CENTER">
+                                          <Button fx:id="gelbeSeiten_commitSearch" alignment="TOP_CENTER" contentDisplay="TOP" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#gelbeSeiten_CommitSearch" prefHeight="25.0" prefWidth="135.0" text="Suche" textAlignment="CENTER">
                                              <cursor>
                                                 <Cursor fx:constant="HAND" />
                                              </cursor>

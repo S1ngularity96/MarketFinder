@@ -7,6 +7,8 @@ package marketfinder;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import org.jsoup.Jsoup;
@@ -25,9 +27,6 @@ public class GelbeSeitenParser {
     
     
     public GelbeSeitenParser() {
-        
-        
-        
     }
     
     /**
@@ -175,7 +174,7 @@ public class GelbeSeitenParser {
                     getAttributeAddr(element.getElementsByClass("adresse m08_adresse"), "postalCode"),
                     getAttributeAddr(element.getElementsByClass("adresse m08_adresse"), "streetAddress") ,
                     elementAnzeigen(element, "teilnehmerentfernung"),
-                    elementAnzeigen(element, "m08_telefonnummer_"),
+                    elementAnzeigen(element, "phone") + getDecodedSuffixOfPhone(element),
                     element.getElementsByClass("website hidden-xs").select("a[href]").attr("href")));
         });
         
@@ -197,7 +196,8 @@ public class GelbeSeitenParser {
                 System.out.println("PLZ: "+getAttributeAddr(element.getElementsByClass("adresse m08_adresse"), "postalCode"));
                 System.out.println("Straße: "+getAttributeAddr(element.getElementsByClass("adresse m08_adresse"), "streetAddress"));
                 System.out.println("Entfernung: "+elementAnzeigen(element, "teilnehmerentfernung"));
-                System.out.println("Telefon: "+elementAnzeigen(element, "m08_telefonnummer_"));
+                System.out.println("Telefon: "+elementAnzeigen(element, "phone")+ 
+                                               getDecodedSuffixOfPhone(element));
                 System.out.println("Webseite: "+element.getElementsByClass("website hidden-xs").select("a[href]").attr("href"));
                 System.out.println("---------------------------------------------------------------------\n");
         }
@@ -252,9 +252,10 @@ public class GelbeSeitenParser {
      */
     public String elementAnzeigen(Element element,String key){
         try{
+            
             return element.getElementsByClass(key).text();
         }catch(NullPointerException e){
-            return "Keine Information vorhanden";
+            return "";
         }
         
     }
@@ -270,5 +271,21 @@ public class GelbeSeitenParser {
         elements.select("address").text();
         return elements.select("address").select("span[itemprop="+key+"]").text();
     }
+
     
+    
+    /**
+     * Decodiert den Base64- kodierten Suffix der Telefonnummer
+     * @param element
+     * @return 
+     */
+    public String getDecodedSuffixOfPhone(Element element){
+        String baseEncoded = element.getElementsByClass("telefonnummer m08_telefonnummer link").
+                attr("data-suffix").toString();
+        Base64_Decoder decoder = new Base64_Decoder();
+        String baseDecoded = decoder.decodeBase64(baseEncoded);
+        
+        
+        return (!baseDecoded.isEmpty()) ? baseDecoded : "";
+    }
 }

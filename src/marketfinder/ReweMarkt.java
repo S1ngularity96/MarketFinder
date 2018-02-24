@@ -98,23 +98,23 @@ public class ReweMarkt extends Market{
         return "-------------------------------------------"+
                 "\nReweMarkt\n" + 
                 "Allgemein:"+
-                "\nMarktname: " + marktname + 
-                "\nStadt: " + stadt + 
-                "\nPLZ: " + plz + 
-                "\nStra\u00dfe: " + strasse + 
-                "\nHausnummer: " + hausnummer +
-                "\nTelefonnummer: "+ tele+
+                "\nMarktname: " + getMarktname() + 
+                "\nStadt: " + getStadt() + 
+                "\nPLZ: " + getPlz() + 
+                "\nStra\u00dfe: " + getStrasse() + 
+                "\nHausnummer: " + getHausnummer() +
+                "\nTelefonnummer: "+ getTele()+
                 "\nGeodaten:" +
                 "\nLatidude: " + latidude + 
                 "\nLongitude: " + longitude +
-                "\nEntfernung: " + entfernung+
+                "\nEntfernung: " + getEntfernung()+
                 "\nArt:"+
                 "\nTyp: " + typ +
-                "\nBranche: "+ branche +
+                "\nBranche: "+ getBranche() +
                 "\n\u00d6fnunngszeiten"+
                 "\nTag: " + tage + 
                 "\nUhrzeit: " + uhrzeit +
-                "\nWebseite: "+ webseite + "\n";
+                "\nWebseite: "+ getWebseite() + "\n";
     }
 
     /**
