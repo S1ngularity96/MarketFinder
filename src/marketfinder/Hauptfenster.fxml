@@ -7,7 +7,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="718.0" prefWidth="1057.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="718.0" prefWidth="1057.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="marketfinder.Hauptfenster_Controller">
    <children>
       <MenuBar minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="700.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <menus>
@@ -99,7 +99,7 @@
                                           <Insets left="45.0" top="17.0" />
                                        </VBox.margin>
                                     </Label>
-                                    <Slider blockIncrement="1.0" max="50.0" maxWidth="170.0" VBox.vgrow="SOMETIMES">
+                                    <Slider fx:id="kilometer_slider" blockIncrement="1.0" max="50.0" maxWidth="170.0" onDragDetected="#kilometer_sliding" VBox.vgrow="SOMETIMES">
                                        <VBox.margin>
                                           <Insets top="7.0" />
                                        </VBox.margin>
