@@ -191,14 +191,14 @@ public class GelbeSeitenParser {
         ArrayList<Element> teilnehmer = getTeilnehmerAsList(webseite);
         for(Element element : teilnehmer){
                 System.out.println("Marktname: "+ elementAnzeigen(element, "m08_teilnehmername teilnehmername entry"));
-                System.out.println("Branche: "+elementAnzeigen(element, "branchen_box"));
-                System.out.println("Stadt: "+getAttributeAddr(element.getElementsByClass("adresse m08_adresse"), "addressLocality"));
-                System.out.println("PLZ: "+getAttributeAddr(element.getElementsByClass("adresse m08_adresse"), "postalCode"));
-                System.out.println("Straße: "+getAttributeAddr(element.getElementsByClass("adresse m08_adresse"), "streetAddress"));
+                System.out.println("Branche: "  +elementAnzeigen(element, "branchen_box"));
+                System.out.println("Stadt: "    +getAttributeAddr(element.getElementsByClass("adresse m08_adresse"), "addressLocality"));
+                System.out.println("PLZ: "      +getAttributeAddr(element.getElementsByClass("adresse m08_adresse"), "postalCode"));
+                System.out.println("Straße: "   +getAttributeAddr(element.getElementsByClass("adresse m08_adresse"), "streetAddress"));
                 System.out.println("Entfernung: "+elementAnzeigen(element, "teilnehmerentfernung"));
-                System.out.println("Telefon: "+elementAnzeigen(element, "phone")+ 
-                                               getDecodedSuffixOfPhone(element));
-                System.out.println("Webseite: "+element.getElementsByClass("website hidden-xs").select("a[href]").attr("href"));
+                System.out.println("Telefon: "   +elementAnzeigen(element, "phone")+ 
+                                                  getDecodedSuffixOfPhone(element));
+                System.out.println("Webseite: "  +element.getElementsByClass("website hidden-xs").select("a[href]").attr("href"));
                 System.out.println("---------------------------------------------------------------------\n");
         }
     }
