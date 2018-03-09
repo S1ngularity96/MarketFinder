@@ -18,6 +18,7 @@ public class GelbeSeitenMarkt extends Market{
     public GelbeSeitenMarkt(String marktname, String branche, String stadt, String plz, String strasse, String entfernung, String tele, String webseite) {
         
         super(marktname, stadt, plz, "", "", branche, entfernung, tele, webseite);
+
         this.strasse = new SimpleStringProperty(splitAddr(strasse)[0]);
         this.hausnummer = new SimpleStringProperty(splitAddr(strasse)[1]);
         
@@ -42,12 +43,13 @@ public class GelbeSeitenMarkt extends Market{
 
     @Override
     public String getStrasse() {
-        return strasse.get();
+        return this.strasse.get();
+        
     }
 
     @Override
     public String getHausnummer() {
-        return hausnummer.get();
+        return this.hausnummer.get();
     }
 
     @Override

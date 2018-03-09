@@ -167,7 +167,8 @@ public class GelbeSeitenParser {
         ArrayList<Element> teilnehmer = getTeilnehmerAsList(webseite);
         
         teilnehmer.forEach((element) -> {
-            markets.add(new GelbeSeitenMarkt(
+            
+            GelbeSeitenMarkt markt = new GelbeSeitenMarkt(
                     elementAnzeigen(element, "m08_teilnehmername teilnehmername entry"),
                     elementAnzeigen(element, "branchen_box"),
                     getAttributeAddr(element.getElementsByClass("adresse m08_adresse"), "addressLocality"),
@@ -175,7 +176,10 @@ public class GelbeSeitenParser {
                     getAttributeAddr(element.getElementsByClass("adresse m08_adresse"), "streetAddress") ,
                     elementAnzeigen(element, "teilnehmerentfernung"),
                     elementAnzeigen(element, "phone") + getDecodedSuffixOfPhone(element),
-                    element.getElementsByClass("website hidden-xs").select("a[href]").attr("href")));
+                    element.getElementsByClass("website hidden-xs").select("a[href]").attr("href"));
+                    
+                    markt.generateFilterHash();
+            markets.add(markt);
         });
         
         return markets;

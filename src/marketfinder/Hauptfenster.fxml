@@ -171,12 +171,17 @@
                            <children>
                               <VBox prefHeight="227.0" prefWidth="167.0" HBox.hgrow="ALWAYS">
                                  <children>
-                                    <CheckBox mnemonicParsing="false" text="Markname vorhanden">
+                                    <CheckBox fx:id="checkbox_marktname" mnemonicParsing="false" onAction="#changeFilterParameters" text="Marktname vorhanden">
                                        <VBox.margin>
                                           <Insets top="20.0" />
                                        </VBox.margin>
                                     </CheckBox>
-                                    <CheckBox mnemonicParsing="false" text="Hausnummer vorhanden">
+                                    <CheckBox fx:id="checkbox_strasse" mnemonicParsing="false" onAction="#changeFilterParameters" text="Straße vorhanden">
+                                       <VBox.margin>
+                                          <Insets top="20.0" />
+                                       </VBox.margin>
+                                    </CheckBox>
+                                    <CheckBox fx:id="checkbox_webseite" mnemonicParsing="false" onAction="#changeFilterParameters" text="Webseite vorhanden">
                                        <VBox.margin>
                                           <Insets top="20.0" />
                                        </VBox.margin>
@@ -193,57 +198,57 @@
                               </VBox>
                               <VBox prefHeight="227.0" prefWidth="150.0" HBox.hgrow="ALWAYS">
                                  <children>
-                                    <CheckBox mnemonicParsing="false" text="Branche vorhanden">
+                                    <CheckBox fx:id="checkbox_branche" mnemonicParsing="false" onAction="#changeFilterParameters" text="Branche vorhanden">
                                        <VBox.margin>
                                           <Insets top="20.0" />
                                        </VBox.margin>
                                     </CheckBox>
-                                    <CheckBox mnemonicParsing="false" text="Enfernung vorhanden">
+                                    <CheckBox fx:id="checkbox_hausnummer" mnemonicParsing="false" onAction="#changeFilterParameters" text="Hausnummer vorhanden">
                                        <VBox.margin>
                                           <Insets top="20.0" />
                                        </VBox.margin>
                                     </CheckBox>
                                     <Separator prefWidth="200.0">
                                        <VBox.margin>
-                                          <Insets top="20.0" />
+                                          <Insets top="57.0" />
                                        </VBox.margin>
                                     </Separator>
                                  </children>
                               </VBox>
                               <VBox prefHeight="227.0" prefWidth="159.0" HBox.hgrow="ALWAYS">
                                  <children>
-                                    <CheckBox mnemonicParsing="false" text="Postleitzahl vorhanden">
+                                    <CheckBox fx:id="checkbox_stadt" mnemonicParsing="false" onAction="#changeFilterParameters" text="Stadt vorhanden">
                                        <VBox.margin>
                                           <Insets top="20.0" />
                                        </VBox.margin>
                                     </CheckBox>
-                                    <CheckBox mnemonicParsing="false" text="Telefon vorhanden">
+                                    <CheckBox fx:id="checkbox_entfernung" mnemonicParsing="false" onAction="#changeFilterParameters" text="Enfernung vorhanden">
                                        <VBox.margin>
                                           <Insets top="20.0" />
                                        </VBox.margin>
                                     </CheckBox>
                                     <Separator prefWidth="200.0">
                                        <VBox.margin>
-                                          <Insets top="20.0" />
+                                          <Insets top="57.0" />
                                        </VBox.margin>
                                     </Separator>
                                  </children>
                               </VBox>
                               <VBox prefHeight="227.0" prefWidth="146.0" HBox.hgrow="ALWAYS">
                                  <children>
-                                    <CheckBox mnemonicParsing="false" text="Straße vorhandne">
+                                    <CheckBox fx:id="checkbox_plz" mnemonicParsing="false" onAction="#changeFilterParameters" text="Postleitzahl vorhanden">
                                        <VBox.margin>
                                           <Insets top="20.0" />
                                        </VBox.margin>
                                     </CheckBox>
-                                    <CheckBox mnemonicParsing="false" text="Webseite vorhanden">
+                                    <CheckBox fx:id="checkbox_telefon" mnemonicParsing="false" onAction="#changeFilterParameters" text="Telefon vorhanden">
                                        <VBox.margin>
                                           <Insets top="20.0" />
                                        </VBox.margin>
                                     </CheckBox>
                                     <Separator prefWidth="200.0">
                                        <VBox.margin>
-                                          <Insets top="20.0" />
+                                          <Insets top="57.0" />
                                        </VBox.margin>
                                     </Separator>
                                  </children>

@@ -6,8 +6,6 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -18,6 +16,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.Slider;
@@ -76,6 +75,20 @@ public class Hauptfenster_Controller implements Initializable{
     @FXML private TableColumn column_telefon;
     @FXML private TableColumn column_webseite;
     
+    //Checkboxen für das Filtern
+    @FXML private CheckBox checkbox_marktname;
+    @FXML private CheckBox checkbox_branche;
+    @FXML private CheckBox checkbox_stadt;
+    @FXML private CheckBox checkbox_plz;
+    @FXML private CheckBox checkbox_strasse;
+    @FXML private CheckBox checkbox_hausnummer;
+    @FXML private CheckBox checkbox_entfernung;
+    @FXML private CheckBox checkbox_telefon;
+    @FXML private CheckBox checkbox_webseite;
+    
+    //FilterHash
+    
+    private long FILTER_HASH = 0;
   
     /**
      * Zeigt eine Tabelle mit Märkten an
@@ -89,6 +102,7 @@ public class Hauptfenster_Controller implements Initializable{
         
        
         for(Market markt : markt_liste_original){
+            markt_liste_oberserved.add(markt);
             tabelle_Observer_List.add(markt);
         }
         
@@ -142,7 +156,7 @@ public class Hauptfenster_Controller implements Initializable{
                            + " zu können.");
         }
         
-       
+        this.applyFilter();
         
     }
     
@@ -186,7 +200,7 @@ public class Hauptfenster_Controller implements Initializable{
                         "Für eine korrekte Suche müssen Sie ein Stichwort und"
                       + " eine Postleitzahl eingeben.");
             }
-            	this.testFilter();
+            	this.applyFilter();
     }
     
       
@@ -205,6 +219,7 @@ public class Hauptfenster_Controller implements Initializable{
             if(datei!=null){
                 CSVExport export = new CSVExport();
                 //CSV String erstellen
+                
                 export.exportCSVFromList(markt_liste_oberserved);
                 try {
                     export.printToFile(datei);
@@ -234,15 +249,61 @@ public class Hauptfenster_Controller implements Initializable{
                 alert.showAndWait();
     }
     
-    public void testFilter() {
+    public void applyFilter() {
     	tabelle_Observer_List.clear();
         markt_liste_oberserved.clear();
         for(Market markt : markt_liste_original){
-        	if((0 & (~markt.getFilterHash())) == 0) {
+        	if((FILTER_HASH & (~markt.getFilterHash())) == 0) {
+                        markt_liste_oberserved.add(markt);
         		tabelle_Observer_List.add(markt);
         	}
         }
     }
+    
+    
+    @FXML public void changeFilterParameters(){
+        FILTER_HASH = 0;
+        
+        if(checkbox_marktname.isSelected()){
+            FILTER_HASH |= Market.FILTER_MARTKNAME;
+        }
+        
+        if(checkbox_branche.isSelected()){
+            FILTER_HASH |= Market.FILTER_BRANCHE;
+        }
+        
+        if(checkbox_stadt.isSelected()){
+            FILTER_HASH |= Market.FILTER_STADT;
+        }
+        
+        if(checkbox_plz.isSelected()){
+            FILTER_HASH |= Market.FILTER_PLZ;
+        }
+        
+        if(checkbox_strasse.isSelected()){
+            FILTER_HASH |= Market.FILTER_STRASSE;
+        }
+        
+        if(checkbox_hausnummer.isSelected()){
+            FILTER_HASH |= Market.FILTER_HAUSNUMMER;
+        }
+        
+        if(checkbox_entfernung.isSelected()){
+            FILTER_HASH |= Market.FILTER_ENTFERNUNG;
+        }
+        
+        if(checkbox_telefon.isSelected()){
+            FILTER_HASH |= Market.FILTER_TELE;
+        }
+        
+        if(checkbox_webseite.isSelected()){
+            FILTER_HASH |= Market.FILTER_WEBSEITE;
+        }
+        
+        this.applyFilter();
+        //System.out.println("Der FilterHash: " + FILTER_HASH);
+    }
+    
     
     /**
      * Starteigenschaften werden hier an die Benutzer- 
