@@ -143,18 +143,7 @@ public class ReweParser {
                   openDetails.getJSONObject(0).getString("hours"), 
                   reweMarket.getString("distance"),
                   reweMarket.getString("phone"),getWebsiteByMarketId(reweMarket.getString("id"))));
-          
-      
-      
-      
       }
-  
-  
-  
-  
-  
- 
-  
     return liste;
     }
   
