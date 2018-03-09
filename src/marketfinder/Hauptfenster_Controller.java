@@ -36,7 +36,9 @@ public class Hauptfenster_Controller implements Initializable{
     
     
     //Tabelle und Liste
-    ArrayList<Market> markt_liste = new ArrayList<>();
+	
+    ArrayList<Market> markt_liste_original = new ArrayList<>();
+    ArrayList<Market> markt_liste_oberserved = new  ArrayList<>();
     ObservableList<Market> tabelle_Observer_List;
     
     
@@ -80,11 +82,13 @@ public class Hauptfenster_Controller implements Initializable{
      * @param markets 
      */
     private void erzeugeTabelle(ArrayList<Market> markets){
-        tabelle_Observer_List.clear();
-        markt_liste.clear();
+    	markt_liste_original = markets;
         
-        markt_liste = markets;
-        for(Market markt : markets){
+    	tabelle_Observer_List.clear();
+        markt_liste_oberserved.clear();
+        
+       
+        for(Market markt : markt_liste_original){
             tabelle_Observer_List.add(markt);
         }
         
@@ -181,7 +185,9 @@ public class Hauptfenster_Controller implements Initializable{
                 showAlertMessage("Fehler", "Stichwort oder Postleitzahl fehlt",
                         "Für eine korrekte Suche müssen Sie ein Stichwort und"
                       + " eine Postleitzahl eingeben.");
-            }}
+            }
+            	this.testFilter();
+    }
     
       
     
@@ -199,7 +205,7 @@ public class Hauptfenster_Controller implements Initializable{
             if(datei!=null){
                 CSVExport export = new CSVExport();
                 //CSV String erstellen
-                export.exportCSVFromList(markt_liste);
+                export.exportCSVFromList(markt_liste_oberserved);
                 try {
                     export.printToFile(datei);
                 } catch (IOException ex) {
@@ -228,6 +234,15 @@ public class Hauptfenster_Controller implements Initializable{
                 alert.showAndWait();
     }
     
+    public void testFilter() {
+    	tabelle_Observer_List.clear();
+        markt_liste_oberserved.clear();
+        for(Market markt : markt_liste_original){
+        	if((0 & (~markt.getFilterHash())) == 0) {
+        		tabelle_Observer_List.add(markt);
+        	}
+        }
+    }
     
     /**
      * Starteigenschaften werden hier an die Benutzer- 
@@ -261,7 +276,7 @@ public class Hauptfenster_Controller implements Initializable{
         
         
         //Oberservierende Liste einsetzen
-        tabelle_Observer_List = FXCollections.observableArrayList(markt_liste);
+        tabelle_Observer_List = FXCollections.observableArrayList(markt_liste_oberserved);
         tabelle_Maerkte.setItems(tabelle_Observer_List);
         
 

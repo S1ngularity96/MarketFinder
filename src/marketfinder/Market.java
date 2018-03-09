@@ -12,7 +12,16 @@ import javafx.beans.property.SimpleStringProperty;
  * @author Andrei
  */
 public abstract class Market {
-    
+     public final static long FILTER_MARTKNAME = 1;
+     public final static long FILTER_STADT = 2;
+     public final static long FILTER_PLZ = 4;
+     public final static long FILTER_STRASSE = 8;
+     public final static long FILTER_HAUSNUMMER=16;
+     public final static long FILTER_BRANCHE=32;
+     public final static long FILTER_ENTFERNUNG=64;
+     public final static long FILTER_TELE=128;
+     public final static long FILTER_WEBSEITE=256;
+	
      SimpleStringProperty marktname;
      SimpleStringProperty stadt;
      SimpleStringProperty plz;
@@ -22,8 +31,13 @@ public abstract class Market {
      SimpleStringProperty entfernung;
      SimpleStringProperty tele;
      SimpleStringProperty webseite;
-    
-         
+     /*
+      * filterHash is no hash in the usual way.
+      * filterHash is there to check in a fast way, 
+      * weather a market has a city, postalcode or
+      * some other stuff set.
+      */
+     long filterHash;
 
     public Market(String marktname, String stadt, String plz, String strasse, String hausnummer, String branche, String entfernung, String tele, String webseite) {
         this.marktname = new SimpleStringProperty(marktname);
@@ -35,6 +49,7 @@ public abstract class Market {
         this.entfernung = new SimpleStringProperty(entfernung);
         this.tele = new SimpleStringProperty(tele);
         this.webseite = new SimpleStringProperty(webseite);
+        generateFilterHash();
     }
     
     
@@ -60,4 +75,39 @@ public abstract class Market {
     public abstract  String getWebseite();
     
     public abstract  String getBranche();
+    
+    public void generateFilterHash() {
+    	filterHash = 0;
+    	if(!(getMarktname() == null || getMarktname().isEmpty())) {
+    		filterHash |= FILTER_MARTKNAME;
+    	}
+    	if(!(getStadt() == null || getStadt().isEmpty())) {
+    		filterHash |= FILTER_STADT;
+    	}
+    	if (!(getPlz() == null || getPlz().isEmpty())) {
+    		filterHash |= FILTER_PLZ;
+    	}
+    	if (!(getStrasse() == null || getStrasse().isEmpty())) {
+    		filterHash |= FILTER_STRASSE;
+    	}
+    	if (!(getHausnummer() == null || getHausnummer().isEmpty())) {
+    		filterHash |= FILTER_HAUSNUMMER;
+    	}
+    	if (!(getEntfernung() == null || getEntfernung().isEmpty())) {
+    		filterHash |= FILTER_ENTFERNUNG;
+    	}
+    	if (!(getTele() == null || getTele().isEmpty())) {
+    		filterHash |= FILTER_TELE;
+    	}
+    	if (!(getWebseite() == null || getWebseite().isEmpty())) {
+    		filterHash |= FILTER_WEBSEITE;
+    	}
+    	if (!(getBranche() == null || getBranche().isEmpty())) {
+    		filterHash |= FILTER_BRANCHE;
+    	}
+    }
+    
+    public long getFilterHash() {
+    	return filterHash;
+    }
 }
