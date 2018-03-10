@@ -6,6 +6,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -18,7 +20,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
-import javafx.scene.control.MenuItem;
+import javafx.scene.control.ListView;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -50,6 +52,9 @@ public class Hauptfenster_Controller implements Initializable{
     @FXML private TextField gelbeseiten_stichwort;
     @FXML private TextField gelbeSeiten_postleitzahl;
     @FXML private Button gelbeSeiten_commitSearch;
+    @FXML private ListView plz_search_gelbeSeiten;
+    @FXML private ObservableList<String> plz_search_observer_gelbeSeiten;
+    
     //--------------------------------------
     
     
@@ -58,6 +63,8 @@ public class Hauptfenster_Controller implements Initializable{
     //Rewe- Tab- Controlls
     @FXML private TextField rewe_plz_text;
     @FXML private Button rewe_commitSearch;
+    @FXML private ListView plz_search_rewe;
+    @FXML private ObservableList<String> plz_search_observer_rewe;
     //--------------------------------------
     
     
@@ -90,6 +97,9 @@ public class Hauptfenster_Controller implements Initializable{
     
     private long FILTER_HASH = 0;
   
+    //PLZ Suche
+    PLZfinder plz_finder = new PLZfinder();
+    ArrayList<String> plz_suche = new ArrayList<>();
     /**
      * Zeigt eine Tabelle mit Märkten an
      * @param markets 
@@ -249,6 +259,11 @@ public class Hauptfenster_Controller implements Initializable{
                 alert.showAndWait();
     }
     
+    // Filtereinstellungen
+    
+    /**
+     * Verändert die Tablle nach den Filtereinstellungen
+     */
     public void applyFilter() {
     	tabelle_Observer_List.clear();
         markt_liste_oberserved.clear();
@@ -260,7 +275,9 @@ public class Hauptfenster_Controller implements Initializable{
         }
     }
     
-    
+    /**
+     * Verändert die Filtereinstellungen für den Tabelleninhalt
+     */
     @FXML public void changeFilterParameters(){
         FILTER_HASH = 0;
         
@@ -305,6 +322,70 @@ public class Hauptfenster_Controller implements Initializable{
     }
     
     
+    // Funktionen für eine einfachere Suche nach PLZ 
+    @FXML public void gelbeSeiten_plz_search(){
+        String plz_text = gelbeSeiten_postleitzahl.getText();
+        
+        if(!(plz_text.length() <=5)){
+            plz_search_gelbeSeiten.setVisible(false);
+            return;
+        }
+        
+        try{
+            int plz = Integer.parseInt(plz_text);
+            
+            plz_suche.clear();
+            plz_search_observer_gelbeSeiten.clear();
+            
+            for(String metaData :plz_finder.setNewRequest(plz)){
+                plz_suche.add(metaData);
+                plz_search_observer_gelbeSeiten.add(metaData);
+            }
+            
+            plz_search_gelbeSeiten.setVisible(false);
+            plz_search_gelbeSeiten.setVisible(true);
+            
+            
+            
+        }catch(NumberFormatException e){
+            plz_search_gelbeSeiten.setVisible(false);
+        } catch (IOException ex) {
+            plz_search_rewe.setVisible(false);
+        } catch (JSONException ex) {
+           plz_search_rewe.setVisible(false);
+        }
+        
+    }
+    
+    @FXML public void rewe_plz_search(){
+        String plz_text = rewe_plz_text.getText();
+        
+        if(!(plz_text.length() <=5)){
+            plz_search_rewe.setVisible(false);
+            return;
+        }
+        
+        try{
+            int plz = Integer.parseInt(plz_text);
+            plz_suche.clear();
+            plz_search_observer_rewe.clear();
+            
+            for(String metaData :plz_finder.setNewRequest(plz)){
+                plz_suche.add(metaData);
+                plz_search_observer_rewe.add(metaData);
+            }
+            plz_search_gelbeSeiten.setVisible(false);
+            plz_search_rewe.setVisible(true);
+            
+        }catch(NumberFormatException e){
+            plz_search_rewe.setVisible(false);
+        } catch (IOException ex) {
+            plz_search_rewe.setVisible(false);
+        } catch (JSONException ex) {
+            plz_search_rewe.setVisible(false);
+        }
+    }
+    
     /**
      * Starteigenschaften werden hier an die Benutzer- 
      * oberfläche übergeben
@@ -340,8 +421,14 @@ public class Hauptfenster_Controller implements Initializable{
         tabelle_Observer_List = FXCollections.observableArrayList(markt_liste_oberserved);
         tabelle_Maerkte.setItems(tabelle_Observer_List);
         
-
+        //Observierende Listen für die Plz- Suche
+        plz_search_gelbeSeiten.setVisible(false);
+        plz_search_rewe.setVisible(false);
         
+        plz_search_observer_gelbeSeiten = FXCollections.observableArrayList(plz_suche);
+        plz_search_gelbeSeiten.setItems(plz_search_observer_gelbeSeiten);
+        plz_search_observer_rewe = FXCollections.observableArrayList(plz_suche);
+        plz_search_rewe.setItems(plz_search_observer_rewe);
         
         
         

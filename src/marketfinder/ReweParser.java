@@ -33,7 +33,7 @@ public class ReweParser {
   
   /**
    * 
-   * @param URL Google- MAPS API Request URL
+   * @param URL 
    * @throws IOException
    * @throws JSONException 
    */
@@ -61,7 +61,7 @@ public class ReweParser {
 
   
   /**
-   * Erstelle ein JSONObject mit allen Informationen aus der Google-Maps API
+   * Erstelle ein JSONObject mit allen Informationen 
    * @param url
    * @return
    * @throws IOException

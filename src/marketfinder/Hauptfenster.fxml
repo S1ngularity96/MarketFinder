@@ -71,11 +71,16 @@
                               </VBox>
                               <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="165.0" prefHeight="207.0" prefWidth="165.0" HBox.hgrow="SOMETIMES">
                                  <children>
-                                    <TextField fx:id="gelbeSeiten_postleitzahl" maxHeight="-Infinity" prefHeight="35.0" prefWidth="100.0" promptText="Postleitzahl">
+                                    <TextField fx:id="gelbeSeiten_postleitzahl" maxHeight="-Infinity" minHeight="-Infinity" onKeyTyped="#gelbeSeiten_plz_search" prefHeight="35.0" prefWidth="284.0" promptText="Postleitzahl">
                                        <VBox.margin>
-                                          <Insets bottom="10.0" top="47.0" />
+                                          <Insets top="47.0" />
                                        </VBox.margin>
                                     </TextField>
+                                    <ListView fx:id="plz_search_gelbeSeiten" prefHeight="200.0" prefWidth="200.0">
+                                       <VBox.margin>
+                                          <Insets bottom="20.0" top="10.0" />
+                                       </VBox.margin>
+                                    </ListView>
                                  </children>
                                  <HBox.margin>
                                     <Insets right="20.0" top="20.0" />
@@ -139,11 +144,16 @@
                                           <Insets left="20.0" top="20.0" />
                                        </VBox.margin>
                                     </Label>
-                                    <TextField fx:id="rewe_plz_text" maxHeight="-Infinity" prefHeight="35.0" prefWidth="100.0" promptText="Postleitzahl">
+                                    <TextField fx:id="rewe_plz_text" maxHeight="-Infinity" minHeight="-Infinity" onKeyTyped="#rewe_plz_search" prefHeight="35.0" prefWidth="100.0" promptText="Postleitzahl">
                                        <VBox.margin>
                                           <Insets left="20.0" right="20.0" top="20.0" />
                                        </VBox.margin>
                                     </TextField>
+                                    <ListView fx:id="plz_search_rewe" prefHeight="200.0" prefWidth="200.0">
+                                       <VBox.margin>
+                                          <Insets bottom="20.0" left="20.0" right="20.0" top="10.0" />
+                                       </VBox.margin>
+                                    </ListView>
                                  </children>
                                  <HBox.margin>
                                     <Insets />
