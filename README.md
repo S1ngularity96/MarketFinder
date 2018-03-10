@@ -14,7 +14,7 @@ Auf der Grafischen Benutzeroberfläche, gemacht in JavaFX, kann man seine Sucher
 Tabelle ausgeben lassen. 
 Die Taballe wird dann über den Button -"CSV Speichern" im Menü wie zuvor gespeichert.
 
-Weitere Updates, wie das Filtern von Ergebnisen aus der Tabelle werden folgen >>>
+Das Filtern von Ergebnissen ist nun möglich.
 
 
 (English)
@@ -29,4 +29,4 @@ Libraries such as: Jsoup, org. json has been used.
 On the graphical user interface, made in JavaFX, you can enter your search parameters and display the results in an some Excel-like Table.
 You can save the content from the table via -"Save CSV" Button in the menu. 
 
-More updates, such as filtering results from the table will follow >>>
+Filtering results from the table is now available >>>
