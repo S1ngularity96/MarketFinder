@@ -6,13 +6,10 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
@@ -334,11 +331,11 @@ public class Hauptfenster_Controller implements Initializable{
         try{
             int plz = Integer.parseInt(plz_text);
             
-            plz_suche.clear();
+            
             plz_search_observer_gelbeSeiten.clear();
             
             for(String metaData :plz_finder.setNewRequest(plz)){
-                plz_suche.add(metaData);
+                
                 plz_search_observer_gelbeSeiten.add(metaData);
             }
             
@@ -367,14 +364,14 @@ public class Hauptfenster_Controller implements Initializable{
         
         try{
             int plz = Integer.parseInt(plz_text);
-            plz_suche.clear();
+            
             plz_search_observer_rewe.clear();
             
             for(String metaData :plz_finder.setNewRequest(plz)){
-                plz_suche.add(metaData);
+                
                 plz_search_observer_rewe.add(metaData);
             }
-            plz_search_gelbeSeiten.setVisible(false);
+            
             plz_search_rewe.setVisible(true);
             
         }catch(NumberFormatException e){

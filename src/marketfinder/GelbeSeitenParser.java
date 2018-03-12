@@ -37,6 +37,7 @@ public class GelbeSeitenParser {
     public ArrayList<Market> commitRequestAndReceive() throws PageLoadingException{
         try {
             Document doc = getHtmlDoc();
+           
             return teilnehmerListe(doc);
         } catch (PageLoadingException ex) {
             throw new PageLoadingException();
@@ -99,7 +100,9 @@ public class GelbeSeitenParser {
         Document gelbeSeite = null;
         
         try {
-           gelbeSeite = Jsoup.connect(getRequestURL()).userAgent("Mozilla/5.0(Windows NT 10.0; Win64; x64; rv:58.0) ").get();
+           gelbeSeite = Jsoup.connect(getRequestURL()).userAgent("Mozilla/5.0(Windows NT 10.0; Win64; x64; rv:58.0) ").
+                   header("content-encoding", "gzip").
+                   header("Vary","Accept-Encoding,User-Agent").get();
         } catch (IOException ex) {
             throw new PageLoadingException();
         }
@@ -113,11 +116,16 @@ public class GelbeSeitenParser {
      * @return 
      */
     public ArrayList<String> getNextURLs(Document webseite){
-        //Finde die nächsten Seiten nach der Klasse "Hidden-xs -desktop"
-        Elements elemente = webseite.getElementsByClass("hidden-xs desktop").select("a[href]");
-         
+        //Finde die nächsten Seiten nach der Klasse "gs_paginierung__liste gs_paginierung__liste--main "
+        //Hotfix 12.03.2018 - User Properties Changed
+        
+        Elements elemente = webseite.getElementsByClass("gs_paginierung__liste gs_paginierung__liste--main ").select("a[href]");
+        
         //Kopiere Links in die Liste und gib diese zurück
          ArrayList<String> links = (ArrayList<String>) elemente.eachAttr("href");
+         
+         
+        
          return links;
         
     }
@@ -217,6 +225,7 @@ public class GelbeSeitenParser {
         ArrayList<String> ids = getItemIds(webseite);
         ArrayList<Element> teilnehmer = new ArrayList<>();
         
+        System.out.println(nextURLs);
         
         //Alle TeilnehmerIDS auslesen
         for(String id : ids){
