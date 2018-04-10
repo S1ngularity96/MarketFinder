@@ -13,11 +13,17 @@ import java.io.Reader;
 import java.net.URL;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.jsoup.Connection.Request;
+import org.jsoup.Connection.Response;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
+
 
 
 
@@ -144,6 +150,7 @@ public class ReweParser {
                   reweMarket.getString("distance"),
                   reweMarket.getString("phone"),getWebsiteByMarketId(reweMarket.getString("id"))));
       }
+      
     return liste;
     }
   
@@ -155,11 +162,11 @@ public class ReweParser {
    * @return 
    */
     public String getWebsiteByMarketId(String Id){
-      try {
+      
+      try{
           Document doc = Jsoup.connect("https://www.rewe.de/marktseite/?wwident="+Id).get();
-          return doc.head().getElementsByTag("link").get(0).attr("href");
+          String url = doc.head().getElementsByTag("link").get(0).attr("href");
+          return url;
       } catch (IOException ex) {
-          return "keine Webseite";
-      }
-    }
-}
+          return "";
+      }}}
